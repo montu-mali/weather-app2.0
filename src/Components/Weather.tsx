@@ -10,25 +10,26 @@ import few from '../assets/few.png'
 import haze from '../assets/haze.png'
 import scattered from '../assets/scattered.png'
 import overcast from '../assets/overcast.png'
+import moment from 'moment';
 
 
 const Weather = (props: any) => {
   let weather = props.weatherData;
   const localBtn = (JSON.parse(localStorage.getItem("button") as string) || false)
-
- const[weatherMood,setWeatherModd] =useState("Clear")
- useEffect(()=>{
-  setWeatherModd(weather.weatherMood)
- },[weather.weatherMood])
+//  console.log(weather)
+//  const[weatherMood,setWeatherModd] =useState("Clear")
+//  useEffect(()=>{
+//   setWeatherModd(weather.weatherMood)
+//  },[weather.weatherMood])
  
   const weatherLogo = () => {
     let key=weather.weatherMood;
-    console.log(key)
+  
     switch (key) {
       case "Heavy rain":
        return <img src={light} alt="yuyu"/>
         break;
-        case "Moderate rain":
+        case "moderate rain":
        return <img src={light} alt="yuyu"/>
         break;
         case "Patchy rain possible":
@@ -80,9 +81,9 @@ const Weather = (props: any) => {
         <div className="temp-details">
           <div className="temp-dec">
             <div className="temp">
-              <span className='cur-temp'>{weather.temp_c}°C</span>
+              <span className='cur-temp'>{((weather.temp)-0).toFixed(0)}°C</span>
               {
-                localBtn?<span className="feel-like">feel like{weather.feelslike_c}°C</span>:<span className="feel-like">feel like{weather.feelslike_f}°F</span>
+                localBtn?<span className="feel-like">feel like {((weather.feels_like)-0).toFixed(0)}°C</span>:<span className="feel-like">feel like{weather.feelslike_f}°F</span>
               }
             </div>
             <div className="description">
@@ -92,8 +93,8 @@ const Weather = (props: any) => {
         </div>
         <div className="day-location">
           <div className="day-time">
-            <span className="day">{weather.localtime}</span>
-            <span className="time"></span>
+            <span className="day">{moment(weather.dt).format('dddd')} </span>
+            <span className="time">,{moment(weather.dt).format('h:mm a')}</span>
           </div>
           <div className="location">
             <span>📍{weather.name},{weather.country}</span>

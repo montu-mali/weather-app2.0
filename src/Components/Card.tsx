@@ -10,48 +10,67 @@ import Loding from './Loding'
 const Card = () => {
   const [weatherData, setWeatherData] = useState({});
   const [castDay, setCastDay] = useState([]);
-  const[todayData,setTodayData]=useState([])
+  const [oneCallData, setOneCallData] = useState([]);
+  const [todayData, setTodayData] = useState([])
   const [location, setLocation] = useState("Modasa");
   const [loding, setLoding] = useState(false);
   const [tempBtn, setTempBtn] = useState(true);
   const [error, setError] = useState("uyuyuyuyu")
-  console.log(todayData)
 
 
   const gatWeatherInfo = async () => {
     try {
       setLoding(true)
-      let url = `http://api.weatherapi.com/v1/forecast.json?key=8917028ee3304aa095a62657231508&q=${location}&days=7&aqi=no&alerts=no`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?appid=a5bb4718b30b6f58f58697997567fffa&q=${location}`;
       let response = await fetch(url)
       let Data = await response.json()
-      console.log(Data)
-      const { cloud, temp_c, temp_f, feelslike_c, feelslike_f, humidity, uv, wind_kph: wind, pressure_mb: pressure } = Data.current;
-      const { name, country, localtime } = Data.location;
-      const { text: weatherMood } = Data.current.condition;
-      const { sunrise, sunset } = Data.forecast.forecastday[0].astro;
+        console.log(Data)
+
+      let urls = `https://api.openweathermap.org/data/2.5/onecall?appid=a5bb4718b30b6f58f58697997567fffa&exclude=minutely&units=metric&lon=${Data.coord.lon}&lat=${Data.coord.lat}`;
+      let respo = await fetch(urls)
+      let oneCall = await respo.json()
+      console.log(oneCall)
+
+      const {clouds, temp, temp_max, temp_min, feels_like, humidity, pressure,sunrise,sunset,uvi } = oneCall.current;
+      const {name } = Data;
+      const {country } = Data.sys;
+      const { description:weatherMood, main } = Data.weather[0];
+      // const { sunrise, sunset} = oneCall.current;
+      const { lon, lat } = Data.coord;
+      const { all: cloud } = Data.clouds;
+
 
       const newWeather = {
-        temp_c,
-        temp_f,
-        feelslike_c,
-        feelslike_f,
+        temp,
+        clouds,
+        temp_max,
+        temp_min,
+        feels_like,
         humidity,
-        uv,
-        wind,
+        uvi,
         pressure,
         weatherMood,
         name,
+        main,
+        // dt,
         cloud,
-        localtime,
+        lon,
+        lat,
         country,
         sunrise,
         sunset,
       }
 
-      setWeatherData(newWeather);
-      setCastDay(Data.forecast.forecastday)
-      setTodayData(Data.forecast.forecastday[0].hour)
+     
 
+      
+      console.log(oneCall)
+
+      setWeatherData(newWeather);
+      setCastDay(oneCall.daily)
+      setTodayData(oneCall.hourly)
+      console.log(todayData)
+      console.log(castDay)
     }
     catch (err: any) {
       console.log(err)
@@ -61,10 +80,11 @@ const Card = () => {
       setLoding(false)
     }
   }
-
+  
   useEffect(() => {
     gatWeatherInfo()
   }, [location]);
+  
 
 
   const receiveLocation = (loc: any) => {
@@ -78,7 +98,7 @@ const Card = () => {
   }, [tempBtn])
 
   console.log(tempBtn)
-
+  console.log(weatherData)
 
 
 

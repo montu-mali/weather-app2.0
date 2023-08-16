@@ -9,11 +9,13 @@ import few from '../assets/few.png'
 import haze from '../assets/haze.png'
 import scattered from '../assets/scattered.png'
 import overcast from '../assets/overcast.png'
+import moment from 'moment';
 
 
 
 const ThisWeek = (props: any) => {
   let SevenDayData = props.castDay
+
   const weatherLogo = (e:any) => {
     let key=e;
     console.log(key)
@@ -71,21 +73,22 @@ const ThisWeek = (props: any) => {
           <div className="eight-day">
             {
               SevenDayData.map((e: any) => {
+                  // const day=moment(e.dt).format('dddd')
                 return (
                   <div className="single-day">
                     <div className="head">
-                    <span>{e.date}</span>
+                    <span>{moment(e.dt).format('Do , h:mm a')}</span>
                     </div>
                     <div className="logo">
                      {
-                      weatherLogo(e.day.condition.text)
+                      // weatherLogo(e.day.condition.text)
                      }
                     </div>
                     <div className="value">
-                      <div className="mood">{e.day.condition.text}</div>
+                      {/* <div className="mood">{e.day.condition.text}</div> */}
                       <div className="temp">
-                        <span className="max">{e.day.maxtemp_c}°</span>
-                        <span className="min">{(e.day.mintemp_c)}°</span>
+                        {/* <span className="max">{e.day.maxtemp_c}°</span> */}
+                        {/* <span className="min">{(e.day.mintemp_c)}°</span>/ */}
                       </div>
                     </div>
                   </div>

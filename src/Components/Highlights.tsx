@@ -7,6 +7,7 @@ import sunrise from '../assets/sunrise.png'
 import sunset from '../assets/sunset.png'
 import uv from '../assets/uv.png'
 import wind from '../assets/wind.png'
+import moment from 'moment';
 
 
 
@@ -47,14 +48,14 @@ const Highlights = (props:any) => {
             <div className="sunrise sun">
               <img src={sunrise} alt="" />
               <div className="time-typse">
-                <span className="time">{data.sunrise}</span>
+                <span className="time">{moment(data.sunrise).format('h:mm a')}</span>
                 <div className="typse">Sunrise</div>
               </div>
             </div>
             <div className="sunset sun">
               <img src={sunset} alt="" />
               <div className="time-typse">
-                <span className="time">{data.sunset}</span>
+                <span className="time">{moment(data.sunset).format('h:mm a')}</span>
                 <div className="typse">Sunset</div>
               </div>
             </div>
@@ -78,7 +79,7 @@ const Highlights = (props:any) => {
               <img src={uv} alt="" />
             </div>
             <div className="value-box">
-              <span className="value"><span className="number">{data.uv}</span></span>
+              <span className="value"><span className="number">{data.uvi}</span></span>
             </div>
           </div>
           <div className="Pressure common-box">
