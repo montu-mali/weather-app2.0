@@ -1,0 +1,59 @@
+.input-city {
+    position: relative;
+
+    .input-box {
+        display: flex;
+        overflow: hidden;
+        background-color: rgb(240, 236, 236);
+        padding: 5px 10px;
+        border-radius: 5px;
+
+        input {
+            overflow: hidden;
+            border: none;
+            outline: none;
+            background-color: rgb(240, 236, 236);
+            font-size: 15px;
+            font-weight: 600;
+            color: rgb(71, 71, 71);
+            width: 100%;
+        }
+
+        .logo {
+            background-color: rgb(218, 214, 214);
+            padding: 5px;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            .search-logo {
+                color: gray;
+            }
+        }
+    }
+    .emptybox{
+        text-align: center;
+        color: red;
+        padding: 2px 5px;
+    }
+}
+
+@media (max-width:599px) {
+    .input-city {
+        position: relative;
+        padding: 0 ;
+
+        .input-box {
+            display: flex;
+            overflow: hidden;
+            background-color: rgb(240, 236, 236);
+            padding: 5px 10px;
+            border-radius: 5px;
+
+            input {}
+        }
+    }
+
+}

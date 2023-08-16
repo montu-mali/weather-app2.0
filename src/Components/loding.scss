@@ -1,0 +1,21 @@
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid #fff;
+	border-top: 4px solid #000;
+    border-right:4px solid rgb(248, 248, 19);
+    border-bottom:4px solid rgb(243, 14, 243) ;
+    border-left: 4px solid rgb(17, 17, 241);
+	border-radius: 50%;
+	animation: montu .7s linear infinite;
+	margin: 50px auto;
+}
+
+@keyframes montu {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

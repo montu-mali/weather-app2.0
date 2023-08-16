@@ -1,0 +1,130 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(243, 242, 242);
+    font-family: 'Space Grotesk', sans-serif;
+
+}
+
+.card-box {
+    overflow: hidden;
+
+    .card {
+        display: flex;
+        height: 100vh;
+
+
+        .col-left {
+            height: 100vh;
+            width: 25%;
+            background-color: white;
+            padding: 40px 40px;
+
+
+            .inputcity {
+                margin-bottom: 40px;
+            }
+
+            .weather {}
+        }
+
+        .col-right {
+            display: grid;
+            width: 75%;
+            padding: 4rem;
+            overflow-y: scroll;
+            gap: 20px;
+
+            .today {}
+
+            .highlights {
+                .head-button {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 0px;
+                    .two-btn{
+                        display: flex;
+                        gap: 10px;
+                        .cals{
+                            cursor: pointer;
+                            height: 40px;
+                            width: 40px;
+                            background-color: black;
+                            color: white;
+                            border-radius: 50%;
+                            display: grid;
+                            text-align: center;
+                            align-items: center;
+                            font-size: 20px;
+                        }
+                        .farn{
+                            cursor: pointer;
+                            height: 40px;
+                            width: 40px;
+                            background-color: white;
+                            color: black;
+                            border-radius: 50%;
+                            display: grid;
+                            text-align: center;
+                            align-items: center;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+
+            .thisweek {}
+
+        }
+
+        .col-right::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+@media (max-width:980px) {
+    .card-box {
+
+        .card {
+            .col-right {
+                padding: 2rem;
+            }
+        }
+    }
+}
+
+@media (max-width:850px) {
+    .card-box {
+        .card {
+            .col-right {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width:599px) {
+    .card-box {
+        .card {
+            display: grid;
+            height: auto;
+
+            .col-left {
+                width: auto;
+                text-align: center;
+                padding: 40px 10px;
+                height: auto;
+
+            }
+
+            .col-right {
+                position: relative;
+                width: auto;
+                padding: 10px 20px;
+
+            }
+        }
+    }
+}

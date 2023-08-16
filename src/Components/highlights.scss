@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Space+Grotesk&family=Ysabeau+Infant:wght@300&family=Ysabeau+Office:wght@300&display=swap');
+
+.highlight-box {
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+
+    .highlight {
+
+        .six-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            .common-box {
+                padding: 10px;
+                background-color: white;
+                text-align: center;
+                display: grid;
+                border-radius: 15px;
+                gap: 10px;
+
+                .head {
+                    span {
+                        font-size: 16px;
+                    }
+                }
+
+                .logo {
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    justify-content: space-around;
+
+                    img {
+                        width: 100px;
+                    }
+                }
+
+                .value-box {
+                    .value {
+                        color: gray;
+                        // font-weight: 600;
+
+                        .number {
+                            font-size: 30px;
+                            font-weight: 600;
+                            color: black;
+                        }
+
+                    }
+                }
+            }
+
+            .sunrise-set {
+                text-align: center;
+                align-items: center;
+                background-color: white;
+                display: grid;
+                padding: 20px;
+                border-radius: 10px;
+
+                .sun {
+                    display: flex;
+                    background-color: white;
+                    gap: 10px;
+                    justify-content: center;
+                    display: flex;
+
+                    img {
+                        width: 50px;
+                    }
+
+                    .time-typse {
+                        text-align: start;
+                        margin-top: auto;
+                        
+                        .time {}
+
+                        .typse {
+                            font-size: 15px;
+                            color: gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:850px) {
+    .highlight-box {
+        .highlight {
+
+            .six-box {
+                
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+    }
+}
+@media (max-width:769px) {
+    .highlight-box {
+        .highlight {
+
+            .six-box {
+                
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    }
+}

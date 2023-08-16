@@ -1,0 +1,86 @@
+.today-box {
+    .today {
+
+        .multi-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            .single-day {
+                display: grid;
+                border-radius: 15px;
+                gap: 12px;
+                padding: 10px;
+                background-color: white;
+                text-align: center;
+
+                .head {
+                    span {
+                        font-size: 16px;
+                    }
+                }
+
+                .logo {
+                    width: 100%;
+                    height: 80px;
+
+                    img {
+                        width: 100px;
+                    }
+                }
+
+                .value {
+                    display: grid;
+                    gap: 8px;
+
+                    .mood {
+                        font-size: 15px;
+                        color: gray;
+                    }
+
+                    .temp {
+                        display: flex;
+                        gap: 10px;
+                        justify-content: center;
+
+                        .max-temp {
+                            color: black;
+                        }
+
+                        .min-temp {
+                            color: gray;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+}
+
+@media (max-width:980px) {
+    .today-box {
+        .today {
+
+            .multi-box {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+    }
+}
+@media (max-width:769px) {
+    .today-box {
+        .today {
+
+            .multi-box {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    }
+}
