@@ -1,10 +1,15 @@
 .today-box {
     .today {
+        // background-color: rgb(196, 195, 195);
+        // padding: 10px 10px;
 
         .multi-box {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            // height: 480px;
+            // overflow-y: scroll;
+
 
             .single-day {
                 display: grid;
@@ -15,8 +20,11 @@
                 text-align: center;
 
                 .head {
-                    span {
-                        font-size: 16px;
+                    .day {}
+
+                    .time {
+                        color: gray;
+                        font-size: 14px;
                     }
                 }
 
@@ -56,6 +64,7 @@
             }
         }
 
+
     }
 
 }
@@ -72,6 +81,7 @@
         }
     }
 }
+
 @media (max-width:769px) {
     .today-box {
         .today {
@@ -79,7 +89,7 @@
             .multi-box {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                gap: 10px;
             }
         }
     }

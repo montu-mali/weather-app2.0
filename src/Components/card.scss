@@ -31,11 +31,13 @@ body {
         .col-right {
             display: grid;
             width: 75%;
-            padding: 4rem;
+            padding:1rem  4rem;
             overflow-y: scroll;
             gap: 20px;
 
-            .today {}
+            .today {
+                width: 100%;
+            }
 
             .highlights {
                 .head-button {

@@ -1,22 +1,32 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import './inputCity.scss'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-const InputCity = ({sendDataToParent}:any) => {
+const InputCity = ({cityNotFound,sendDataToParent}:any) => {
   const[inputloc,setInputLoc]=useState("Modasa");
   const[emptyLoc,setEmptyLoc]=useState("");
 
   const sendLocation =(e:any)=>{
     e.preventDefault();
     sendDataToParent(inputloc);
-
+      console.log(cityNotFound)
     if(inputloc==""){
       setEmptyLoc("please enter city name")
+    }
+    else if(cityNotFound=="city not found"){
+      setEmptyLoc("Please Enter Valid Location")
+    }
+    else if(cityNotFound==""){
+      setEmptyLoc("")
     }
     else{
       setEmptyLoc("")
     }
   }
+  
+ useEffect(()=>{
+
+ },[])
  
 
   return (

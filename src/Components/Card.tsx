@@ -10,12 +10,11 @@ import Loding from './Loding'
 const Card = () => {
   const [weatherData, setWeatherData] = useState({});
   const [castDay, setCastDay] = useState([]);
-  const [oneCallData, setOneCallData] = useState([]);
   const [todayData, setTodayData] = useState([])
   const [location, setLocation] = useState("Modasa");
   const [loding, setLoding] = useState(false);
   const [tempBtn, setTempBtn] = useState(true);
-  const [error, setError] = useState("uyuyuyuyu")
+  const [error, setError] = useState("")
 
 
   const gatWeatherInfo = async () => {
@@ -24,14 +23,20 @@ const Card = () => {
       let url = `https://api.openweathermap.org/data/2.5/weather?appid=a5bb4718b30b6f58f58697997567fffa&q=${location}`;
       let response = await fetch(url)
       let Data = await response.json()
-        console.log(Data)
 
+        if(Data.message==="city not found"){
+          setError(Data.message)
+        }
+        else{
+          setError("")
+        }
+        
       let urls = `https://api.openweathermap.org/data/2.5/onecall?appid=a5bb4718b30b6f58f58697997567fffa&exclude=minutely&units=metric&lon=${Data.coord.lon}&lat=${Data.coord.lat}`;
       let respo = await fetch(urls)
       let oneCall = await respo.json()
-      console.log(oneCall)
 
-      const {clouds, temp, temp_max, temp_min, feels_like, humidity, pressure,sunrise,sunset,uvi } = oneCall.current;
+      const {clouds,wind_speed, temp, temp_max, temp_min, feels_like, humidity, pressure,dt,sunrise,sunset,uvi } = oneCall.current;
+      
       const {name } = Data;
       const {country } = Data.sys;
       const { description:weatherMood, main } = Data.weather[0];
@@ -52,7 +57,8 @@ const Card = () => {
         weatherMood,
         name,
         main,
-        // dt,
+        dt,
+        wind_speed,
         cloud,
         lon,
         lat,
@@ -60,21 +66,12 @@ const Card = () => {
         sunrise,
         sunset,
       }
-
-     
-
-      
-      console.log(oneCall)
-
       setWeatherData(newWeather);
       setCastDay(oneCall.daily)
       setTodayData(oneCall.hourly)
-      console.log(todayData)
-      console.log(castDay)
     }
     catch (err: any) {
       console.log(err)
-      setError("Please Enter Valid Location")
     }
     finally {
       setLoding(false)
@@ -108,7 +105,7 @@ const Card = () => {
         <div className="card">
           <div className="col-left">
             <div className="inputcity">
-              <InputCity sendDataToParent={receiveLocation} />
+              <InputCity sendDataToParent={receiveLocation} cityNotFound={error} />
             </div>
             <div className="weather">
               {
@@ -120,10 +117,10 @@ const Card = () => {
             <div className="highlights">
               <div className="head-button">
                 <h2>Today's Highlights</h2>
-                <div className="two-btn">
+                {/* <div className="two-btn">
                   <div className="cals" onClick={() => setTempBtn(true)}>°C</div>
                   <div className="farn" onClick={() => setTempBtn(false)}>°F</div>
-                </div>
+                </div> */}
               </div>
               {
                 loding ? <Loding /> : <Highlights weatherData={weatherData} btn={tempBtn} />
@@ -138,7 +135,9 @@ const Card = () => {
             </div>
             <div className="today">
               <h2>Today</h2>
-              <Today todayData={todayData} />
+              {
+                loding ? <Loding /> :<Today todayData={todayData} />
+              }
             </div>
           </div>
         </div>

@@ -8,54 +8,64 @@ import haze from '../assets/haze.png'
 import scattered from '../assets/scattered.png'
 import overcast from '../assets/overcast.png'
 
-
 const Logo = (props:any) => {
- const[logos,setLogos]=React.useState("hase");
- const[weatherMood,setWeatherModd] =useState("few clouds")
+  // const [logos, setLogos] = React.useState("hase");
+  // const [weatherMood, setWeatherModd] = useState("few clouds")
 
 
-
+  let key = props.weatherLogo;
   const weatherLogo = () => {
-    let key =weatherMood;
     switch (key) {
-      case "Heavy rain"||"Moderate rain"||"Patchy rain possible"||"Moderate or heavy rain with thunder"||"light rain":
-       return <img src={mist} alt="yuyu"/>
+      case "Heavy rain":
+        return <img src={light} alt="yuyu" />
+        break;
+      case "Moderate rain":
+        return <img src={light} alt="yuyu" />
+        break;
+      case "Patchy rain possible":
+        return <img src={light} alt="yuyu" />
+        break;
+      case "Light rain shower":
+        return <img src={light} alt="yuyu" />
+        break;
+      case "Moderate or heavy rain with thunder":
+        return <img src={light} alt="yuyu" />
+        break;
+      case "light rain":
+        return <img src={light} alt="yuyu" />
         break;
       case "few clouds":
-        return <img src={few} alt="yuyu"/>
+        return <img src={few} alt="yuyu" />
         break;
-      case "Clear"||"Sunny":
-        return <img src={clear} alt="yuyu"/>
+      case "Clear":
+        return <img src={clear} alt="yuyu" />
+        break;
+      case "Sunny":
+        return <img src={clear} alt="yuyu" />
         break;
       case "scattered clouds":
-        setLogos("scattered")
+        return <img src={scattered} alt="yuyu" />
         break;
-      case "broken clouds"||"overcast clouds":
-        return <img src={overcast} alt="yuyu"/>
+      case "overcast clouds":
+        return <img src={overcast} alt="yuyu" />
+        break;
+      case "broken clouds":
+        return <img src={overcast} alt="yuyu" />
         break;
       case "Haze":
-        return <img src={haze} alt="yuyu"/>
+        return <img src={haze} alt="yuyu" />
         break;
 
       default:
-        return <img src={haze} alt="yuyu"/>
+        return <img src={haze} alt="yuyu" />
         break;
     }
   }
-  
-  useEffect(()=>{
-    // weatherLogo()
-    let key =weatherMood;
-   if(key){
-   
-   }
-  },[])
 
-  return (
+  return(
     <>
-    {weatherLogo()}
+      {weatherLogo()}
     </>
   )
 }
-
 export default Logo

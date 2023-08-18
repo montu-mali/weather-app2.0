@@ -16,8 +16,6 @@ const Highlights = (props:any) => {
   let data =props.weatherData;
   const localBtn = (JSON.parse(localStorage.getItem("button") as string )|| false)
 
-  
-
   return (
     <div className="highlight-box">
       <div className="highlight">
@@ -41,21 +39,21 @@ const Highlights = (props:any) => {
               <img src={wind} alt="" />
             </div>
             <div className="value-box">
-              <span className="value"><span className="number">{data.wind}</span>kph</span>
+              <span className="value"><span className="number">{data.wind_speed}</span>kph</span>
             </div>
           </div>
           <div className="sunrise-set">
             <div className="sunrise sun">
               <img src={sunrise} alt="" />
               <div className="time-typse">
-                <span className="time">{moment(data.sunrise).format('h:mm a')}</span>
+                <span className="time">{moment(data.sunrise*1000).format('h:mm a')}</span>
                 <div className="typse">Sunrise</div>
               </div>
             </div>
             <div className="sunset sun">
               <img src={sunset} alt="" />
               <div className="time-typse">
-                <span className="time">{moment(data.sunset).format('h:mm a')}</span>
+                <span className="time">{moment(data.sunset*1000).format('h:mm a')}</span>
                 <div className="typse">Sunset</div>
               </div>
             </div>
