@@ -9,7 +9,6 @@ const Weather = (props: any) => {
   let weather = props.weatherData;
   const localBtn = (JSON.parse(localStorage.getItem("button") as string) || false)
 
-  console.log(weather)
   return (
     <div className="weather-box">
       <div className="weather">

@@ -40,7 +40,6 @@ const Card = () => {
       const {name } = Data;
       const {country } = Data.sys;
       const { description:weatherMood, main } = Data.weather[0];
-      // const { sunrise, sunset} = oneCall.current;
       const { lon, lat } = Data.coord;
       const { all: cloud } = Data.clouds;
 
@@ -93,10 +92,6 @@ const Card = () => {
     const localBtn = (JSON.parse(localStorage.getItem("button") as string) || false)
     setTempBtn(localBtn)
   }, [tempBtn])
-
-  console.log(tempBtn)
-  console.log(weatherData)
-
 
 
   return (

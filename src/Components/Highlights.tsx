@@ -12,9 +12,8 @@ import moment from 'moment';
 
 
 const Highlights = (props:any) => {
-  // const[data,setData]=useState(props.weatherData)
+
   let data =props.weatherData;
-  const localBtn = (JSON.parse(localStorage.getItem("button") as string )|| false)
 
   return (
     <div className="highlight-box">

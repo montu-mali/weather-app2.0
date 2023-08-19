@@ -6,9 +6,7 @@ import moment from 'moment';
 
 
 const Today = (props: any) => {
-  let toDayData = props.todayData
-  console.log(toDayData)
-
+  let toDayData = props.todayData;
 
   return (
     <>

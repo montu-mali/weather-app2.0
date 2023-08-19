@@ -9,7 +9,7 @@ const InputCity = ({cityNotFound,sendDataToParent}:any) => {
   const sendLocation =(e:any)=>{
     e.preventDefault();
     sendDataToParent(inputloc);
-      console.log(cityNotFound)
+    
     if(inputloc==""){
       setEmptyLoc("please enter city name")
     }
